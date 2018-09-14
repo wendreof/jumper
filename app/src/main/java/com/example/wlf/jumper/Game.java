@@ -9,17 +9,20 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game extends SurfaceView implements Runnable, View.OnTouchListener {
 
     private Tela tela;
     private Bitmap background;
     private Cano cano;
-
+    private Canos canos;
     private Canvas canvas;
-
     private boolean isRunning = true;
     private final SurfaceHolder holder = getHolder();
     private Passaro passaro;
+    private Pontuacao pontuacao;
 
     public Game(Context context)
     {
@@ -32,17 +35,15 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
 
     private void inicializaElementos()
     {
+        this.pontuacao = new Pontuacao();
+        this.passaro = new Passaro(tela);
+        this.canos = new Canos(tela, pontuacao);
         Bitmap back = BitmapFactory.decodeResource(getResources(),
                 R.drawable.background);
-        background = Bitmap.createScaledBitmap(back, back.getWidth(), tela.getAltura(), false);
+        this.background = Bitmap.createScaledBitmap(back, back.getWidth(), tela.getAltura(), false);
         //this.setBackgroundResource(R.drawable.background);
 
-
-        this.passaro = new Passaro();
-        this.cano = new Cano(tela, 200);
-
     }
-
 
     @Override
     public void run() {
@@ -54,13 +55,13 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
 
             canvas.drawBitmap(background, 0, 0, null);
 
-
-
             passaro.desenhaNo(canvas);
             passaro.cai();
 
-            cano.desenhaNo(canvas);
-            cano.move();
+            canos.desenhaNo(canvas);
+            canos.move();
+
+            pontuacao.desenhaNo(canvas);
 
             holder.unlockCanvasAndPost(canvas);
         }
