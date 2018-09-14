@@ -1,5 +1,6 @@
 package com.example.wlf.jumper;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
@@ -11,24 +12,26 @@ public class Canos {
 
 
     private static final int QUANTIDADE_DE_CANOS = 5;
+    private static final int POSICAO_INICIAL = 400;
     private static final int DISTANCIA_ENTRE_CANOS = 250;
     private final List<Cano> canos = new ArrayList<Cano>();
-    private Cano cano;
     private Tela tela;
     private final Pontuacao pontuacao;
 
 
-
     public Canos(Tela tela, Pontuacao pontuacao) {
+        this.tela = tela;
         this.pontuacao = pontuacao;
-        int posicaoInicial = 200;
+
+        int posicaoInicial = POSICAO_INICIAL;
 
         for(int i=0; i<QUANTIDADE_DE_CANOS; i++)
         {
-            posicaoInicial +=DISTANCIA_ENTRE_CANOS;
+            posicaoInicial += DISTANCIA_ENTRE_CANOS;
             canos.add(new Cano(tela, posicaoInicial));
         }
     }
+
 
     public void desenhaNo(Canvas canvas)
     {
@@ -54,6 +57,7 @@ public class Canos {
             }
         }
     }
+
 
 
 
