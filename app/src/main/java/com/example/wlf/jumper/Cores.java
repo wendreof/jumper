@@ -1,6 +1,7 @@
 package com.example.wlf.jumper;
 
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 
 public class Cores {
@@ -31,6 +32,18 @@ public class Cores {
 
         return branco;
     }
+
+    public static Paint getCorDoGameOver() {
+        Paint vermelho = new Paint();
+        vermelho.setColor(0xFFFF0000);
+        vermelho.setTextSize(50);
+        vermelho.setTypeface(Typeface.DEFAULT_BOLD);
+        vermelho.setShadowLayer(2, 3, 3, 0xFF000000);
+
+        return vermelho;
+    }
+
+
 
 
 }

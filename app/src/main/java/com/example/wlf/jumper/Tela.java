@@ -18,7 +18,6 @@ public class Tela {
         metrics = new DisplayMetrics();
         display.getMetrics(metrics);
 
-
     }
 
     public int getAltura()
@@ -26,5 +25,8 @@ public class Tela {
         return metrics.heightPixels;
     }
 
+    public int getLargura() {
+        return metrics.widthPixels;
+    }
 
 }

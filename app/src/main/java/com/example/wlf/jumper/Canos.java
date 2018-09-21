@@ -1,6 +1,8 @@
 package com.example.wlf.jumper;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
@@ -10,35 +12,33 @@ import java.util.ListIterator;
 
 public class Canos {
 
-
     private static final int QUANTIDADE_DE_CANOS = 5;
     private static final int POSICAO_INICIAL = 400;
     private static final int DISTANCIA_ENTRE_CANOS = 250;
     private final List<Cano> canos = new ArrayList<Cano>();
     private Tela tela;
     private final Pontuacao pontuacao;
+    private Context context;
 
-
-    public Canos(Tela tela, Pontuacao pontuacao) {
+    public Canos(Tela tela, Pontuacao pontuacao, Context context) {
         this.tela = tela;
         this.pontuacao = pontuacao;
+        this.context = context;
 
         int posicaoInicial = POSICAO_INICIAL;
 
         for(int i=0; i<QUANTIDADE_DE_CANOS; i++)
         {
             posicaoInicial += DISTANCIA_ENTRE_CANOS;
-            canos.add(new Cano(tela, posicaoInicial));
+            canos.add(new Cano(tela, posicaoInicial, context));
         }
     }
-
 
     public void desenhaNo(Canvas canvas)
     {
         for(Cano cano : canos)
             cano.desenhaNo(canvas);
     }
-
 
     public void move()
     {
@@ -52,14 +52,11 @@ public class Canos {
                 pontuacao.aumenta();
                 iterator.remove();
                 Cano outroCano =
-                        new Cano(tela, getMaximo() + DISTANCIA_ENTRE_CANOS);
+                        new Cano(tela, getMaximo() + DISTANCIA_ENTRE_CANOS, context);
                 iterator.add(outroCano);
             }
         }
     }
-
-
-
 
     public int getMaximo()
     {
@@ -73,7 +70,18 @@ public class Canos {
         return maximo;
     }
 
-
+    public boolean temColisaoCom(Passaro passaro)
+    {
+        for (Cano cano : canos)
+        {
+            if ( cano.temColisaoHorizontalCom(passaro)
+                    && cano.temColisaoVerticalCom(passaro) )
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 }

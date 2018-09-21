@@ -9,8 +9,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.wlf.jumper.elementos.GameOver;
+import com.example.wlf.jumper.engine.VerificadorDeColisao;
+
 
 public class Game extends SurfaceView implements Runnable, View.OnTouchListener {
 
@@ -36,10 +37,9 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
     private void inicializaElementos()
     {
         this.pontuacao = new Pontuacao();
-        this.passaro = new Passaro(tela);
-        this.canos = new Canos(tela, pontuacao);
-        Bitmap back = BitmapFactory.decodeResource(getResources(),
-                R.drawable.background);
+        this.passaro = new Passaro(tela, getContext());
+        this.canos = new Canos(tela, pontuacao, getContext());
+        Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
         this.background = Bitmap.createScaledBitmap(back, back.getWidth(), tela.getAltura(), false);
         //this.setBackgroundResource(R.drawable.background);
 
@@ -64,6 +64,12 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
             pontuacao.desenhaNo(canvas);
 
             holder.unlockCanvasAndPost(canvas);
+
+            if ( new VerificadorDeColisao(passaro, canos).temColisao() )
+            {
+                new GameOver(tela).desenhaNo(canvas);
+                isRunning = false;
+            }
         }
     }
 
@@ -76,7 +82,6 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
     {
         this.isRunning = true;
     }
-
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {

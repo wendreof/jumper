@@ -1,43 +1,62 @@
 package com.example.wlf.jumper;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
 public class Passaro {
 
-    private static final int X = 100;
-    private static final  int RAIO = 50;
+    public static final int X = 100;
+    public static final  int RAIO = 50;
     private static final Paint vermelho = Cores.getCorDoPassaro();
     private Tela tela;
+    private Bitmap passaro;
 
     private int altura;
 
-    public Passaro(Tela tela)
+    public Passaro(Tela tela, Context context)
     {
         this.tela = tela;
-        this.altura = 100;
+        this.setAltura(100);
+
+        Bitmap bp = BitmapFactory.decodeResource(context.getResources(), R.drawable.passaro);
+        passaro = bp.createScaledBitmap(bp, RAIO*2, RAIO*2, false);
     }
 
     public void desenhaNo(Canvas canvas)
     {
-        canvas.drawCircle(X,   altura, RAIO, vermelho);
+        //canvas.drawCircle(X, getAltura(), RAIO, vermelho);
+        canvas.drawBitmap(passaro, X-RAIO, altura-RAIO, null);
     }
 
     public void cai()
     {
-        boolean checouNoChao = altura + RAIO > tela.getAltura();
+        boolean checouNoChao = getAltura() + RAIO > tela.getAltura();
 
         if ( ! checouNoChao )
         {
-            altura +=5;
+            setAltura(getAltura() + 5);
 
         }
     }
 
     public void  pula()
     {
-        if(altura > RAIO) {
-            altura -= 150;
+        if(getAltura() > RAIO) {
+            setAltura(getAltura() - 150);
         }
     }
+
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+
+
 }
