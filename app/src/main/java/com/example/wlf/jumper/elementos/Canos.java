@@ -1,10 +1,12 @@
-package com.example.wlf.jumper;
+package com.example.wlf.jumper.elementos;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
+
+import com.example.wlf.jumper.elementos.Cano;
+import com.example.wlf.jumper.elementos.Passaro;
+import com.example.wlf.jumper.elementos.Pontuacao;
+import com.example.wlf.jumper.graficos.Tela;
 
 import java.util.ArrayList;
 import java.util.List;

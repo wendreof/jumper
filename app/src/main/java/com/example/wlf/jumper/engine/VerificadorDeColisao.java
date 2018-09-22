@@ -1,7 +1,7 @@
 package com.example.wlf.jumper.engine;
 
-import com.example.wlf.jumper.Canos;
-import com.example.wlf.jumper.Passaro;
+import com.example.wlf.jumper.elementos.Canos;
+import com.example.wlf.jumper.elementos.Passaro;
 
 public class VerificadorDeColisao {
 

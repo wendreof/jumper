@@ -1,10 +1,14 @@
-package com.example.wlf.jumper;
+package com.example.wlf.jumper.elementos;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+
+import com.example.wlf.jumper.R;
+import com.example.wlf.jumper.graficos.Cores;
+import com.example.wlf.jumper.graficos.Tela;
 
 
 public class Cano {

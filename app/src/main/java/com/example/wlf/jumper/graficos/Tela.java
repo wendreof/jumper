@@ -1,4 +1,4 @@
-package com.example.wlf.jumper;
+package com.example.wlf.jumper.graficos;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

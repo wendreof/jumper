@@ -1,4 +1,4 @@
-package com.example.wlf.jumper;
+package com.example.wlf.jumper.engine;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,26 +9,33 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
+import com.example.wlf.jumper.elementos.Cano;
+import com.example.wlf.jumper.elementos.Canos;
+import com.example.wlf.jumper.elementos.Passaro;
+import com.example.wlf.jumper.elementos.Pontuacao;
+import com.example.wlf.jumper.R;
 import com.example.wlf.jumper.elementos.GameOver;
-import com.example.wlf.jumper.engine.VerificadorDeColisao;
+import com.example.wlf.jumper.graficos.Tela;
 
 
 public class Game extends SurfaceView implements Runnable, View.OnTouchListener {
 
-    private Tela tela;
-    private Bitmap background;
-    private Cano cano;
-    private Canos canos;
-    private Canvas canvas;
     private boolean isRunning = true;
     private final SurfaceHolder holder = getHolder();
+    private Tela tela;
+    private Bitmap background;
+    private Canos canos;
+    private Canvas canvas;
     private Passaro passaro;
     private Pontuacao pontuacao;
+    private Som som;
+    private Context context;
 
     public Game(Context context)
     {
         super(context);
-        this.tela = new Tela(context);
+        this.context = context;
+        tela = new Tela(context);
 
         inicializaElementos();
         setOnTouchListener(this);
@@ -36,20 +43,23 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
 
     private void inicializaElementos()
     {
+        this.passaro = new Passaro(tela, context);
         this.pontuacao = new Pontuacao();
-        this.passaro = new Passaro(tela, getContext());
-        this.canos = new Canos(tela, pontuacao, getContext());
+        this.canos = new Canos(tela, pontuacao, context);
         Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
         this.background = Bitmap.createScaledBitmap(back, back.getWidth(), tela.getAltura(), false);
         //this.setBackgroundResource(R.drawable.background);
-
+        som = new Som(context);
     }
 
     @Override
     public void run() {
-        while (isRunning){
+        while ( isRunning ){
 
-            if ( ! holder.getSurface().isValid() ) continue;
+            if ( ! holder.getSurface().isValid() )
+            {
+                continue;
+            }
 
             canvas = holder.lockCanvas();
 
@@ -63,19 +73,15 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
 
             pontuacao.desenhaNo(canvas);
 
-            holder.unlockCanvasAndPost(canvas);
-
             if ( new VerificadorDeColisao(passaro, canos).temColisao() )
             {
+                som.tocaSom(Som.COLISAO);
                 new GameOver(tela).desenhaNo(canvas);
                 isRunning = false;
             }
-        }
-    }
 
-    public void cancela()
-    {
-        this.isRunning = false;
+            holder.unlockCanvasAndPost(canvas);
+        }
     }
 
     public void inicia()
@@ -83,8 +89,13 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
         this.isRunning = true;
     }
 
+    public void cancela()
+    {
+        this.isRunning = false;
+    }
+
     @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
+    public boolean onTouch( View view, MotionEvent motionEvent ) {
         passaro.pula();
         return false;
     }
