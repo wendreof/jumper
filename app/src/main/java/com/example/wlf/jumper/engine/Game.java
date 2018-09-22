@@ -8,8 +8,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-
-import com.example.wlf.jumper.elementos.Cano;
 import com.example.wlf.jumper.elementos.Canos;
 import com.example.wlf.jumper.elementos.Passaro;
 import com.example.wlf.jumper.elementos.Pontuacao;
@@ -31,23 +29,23 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
     private Som som;
     private Context context;
 
-    public Game(Context context)
+    public Game( Context context )
     {
-        super(context);
+        super( context );
         this.context = context;
-        tela = new Tela(context);
+        tela = new Tela( context );
 
         inicializaElementos();
-        setOnTouchListener(this);
+        setOnTouchListener( this );
     }
 
     private void inicializaElementos()
     {
         this.passaro = new Passaro(tela, context);
         this.pontuacao = new Pontuacao();
-        this.canos = new Canos(tela, pontuacao, context);
-        Bitmap back = BitmapFactory.decodeResource(getResources(), R.drawable.background);
-        this.background = Bitmap.createScaledBitmap(back, back.getWidth(), tela.getAltura(), false);
+        this.canos = new Canos( tela, pontuacao, context );
+        Bitmap back = BitmapFactory.decodeResource( getResources(), R.drawable.background );
+        this.background = Bitmap.createScaledBitmap( back, back.getWidth(), tela.getAltura(), false );
         //this.setBackgroundResource(R.drawable.background);
         som = new Som(context);
     }

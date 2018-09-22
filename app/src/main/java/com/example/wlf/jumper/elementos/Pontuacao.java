@@ -2,7 +2,6 @@ package com.example.wlf.jumper.elementos;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-
 import com.example.wlf.jumper.graficos.Cores;
 
 public class Pontuacao {
@@ -15,8 +14,8 @@ public class Pontuacao {
         pontos++;
     }
 
-    public void desenhaNo(Canvas canvas)
+    public void desenhaNo( Canvas canvas )
     {
-        canvas.drawText(String.valueOf(pontos), 100, 100, BRANCO);
+        canvas.drawText( String.valueOf( pontos ), 100, 100, BRANCO );
     }
 }

@@ -14,7 +14,7 @@ public class Som {
 
     public Som( Context context )
     {
-        soundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+        soundPool = new SoundPool( 3, AudioManager.STREAM_MUSIC, 0 );
         PULO = soundPool.load(context, R.raw.pulo, 1);
         PONTOS = soundPool.load(context, R.raw.pontos, 1);
         COLISAO = soundPool.load(context, R.raw.colisao,1);

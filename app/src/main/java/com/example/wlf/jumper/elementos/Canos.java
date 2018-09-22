@@ -2,10 +2,6 @@ package com.example.wlf.jumper.elementos;
 
 import android.content.Context;
 import android.graphics.Canvas;
-
-import com.example.wlf.jumper.elementos.Cano;
-import com.example.wlf.jumper.elementos.Passaro;
-import com.example.wlf.jumper.elementos.Pontuacao;
 import com.example.wlf.jumper.graficos.Tela;
 
 import java.util.ArrayList;
@@ -22,30 +18,30 @@ public class Canos {
     private final Pontuacao pontuacao;
     private Context context;
 
-    public Canos(Tela tela, Pontuacao pontuacao, Context context) {
+    public Canos( Tela tela, Pontuacao pontuacao, Context context ) {
         this.tela = tela;
         this.pontuacao = pontuacao;
         this.context = context;
 
         int posicaoInicial = POSICAO_INICIAL;
 
-        for(int i=0; i<QUANTIDADE_DE_CANOS; i++)
+        for( int i=0; i<QUANTIDADE_DE_CANOS; i++)
         {
             posicaoInicial += DISTANCIA_ENTRE_CANOS;
-            canos.add(new Cano(tela, posicaoInicial, context));
+            canos.add( new Cano( tela, posicaoInicial, context ) );
         }
     }
 
-    public void desenhaNo(Canvas canvas)
+    public void desenhaNo( Canvas canvas )
     {
-        for(Cano cano : canos)
-            cano.desenhaNo(canvas);
+        for( Cano cano : canos )
+            cano.desenhaNo( canvas );
     }
 
     public void move()
     {
         ListIterator<Cano> iterator = canos.listIterator();
-        while(iterator.hasNext()) {
+        while( iterator.hasNext() ) {
             Cano cano = (Cano) iterator.next();
             cano.move();
 
@@ -54,8 +50,8 @@ public class Canos {
                 pontuacao.aumenta();
                 iterator.remove();
                 Cano outroCano =
-                        new Cano(tela, getMaximo() + DISTANCIA_ENTRE_CANOS, context);
-                iterator.add(outroCano);
+                        new Cano( tela, getMaximo() + DISTANCIA_ENTRE_CANOS, context );
+                iterator.add( outroCano );
             }
         }
     }
@@ -64,27 +60,24 @@ public class Canos {
     {
         int maximo = 0;
 
-        for(Cano cano : canos)
+        for( Cano cano : canos )
         {
-            maximo = Math.max(cano.getPosicao(), maximo);
+            maximo = Math.max( cano.getPosicao(), maximo );
         }
 
         return maximo;
     }
 
-    public boolean temColisaoCom(Passaro passaro)
+    public boolean temColisaoCom( Passaro passaro )
     {
-        for (Cano cano : canos)
+        for ( Cano cano : canos )
         {
-            if ( cano.temColisaoHorizontalCom(passaro)
-                    && cano.temColisaoVerticalCom(passaro) )
+            if ( cano.temColisaoHorizontalCom(passaro) && cano.temColisaoVerticalCom(passaro) )
             {
                 return true;
             }
         }
         return false;
     }
-
-
 }
 

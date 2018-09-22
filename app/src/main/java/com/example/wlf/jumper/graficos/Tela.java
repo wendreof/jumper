@@ -9,14 +9,14 @@ public class Tela {
 
     private DisplayMetrics metrics;
 
-    public Tela(Context context)
+    public Tela( Context context )
     {
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager wm = ( WindowManager ) context.getSystemService( Context.WINDOW_SERVICE );
 
         Display display = wm.getDefaultDisplay();
 
         metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
+        display.getMetrics( metrics );
 
     }
 
@@ -28,5 +28,4 @@ public class Tela {
     public int getLargura() {
         return metrics.widthPixels;
     }
-
 }
