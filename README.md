@@ -7,6 +7,6 @@
     <img src="/app/src/main/res/screenshots/1.jpeg" width="300"/>
 </p>
 
-- Based on this <a href="http://www.casadocodigo.com.br/products/livro-games-android" target="_blank">Book </a> 
+- Based on this <a href="http://www.casadocodigo.com.br/products/livro-games-android" target="_blank">Book </a>
 
-**- Just clone and run it!**
+- Just clone and run it!**
