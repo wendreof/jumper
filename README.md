@@ -9,4 +9,4 @@
 
 - Based on this <a href="http://www.casadocodigo.com.br/products/livro-games-android" target="_blank">Book </a> 
 
-*- Just clone and run it!
+**- Just clone and run it!
