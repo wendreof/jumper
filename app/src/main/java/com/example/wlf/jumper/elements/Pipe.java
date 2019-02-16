@@ -1,4 +1,4 @@
-package com.example.wlf.jumper.elementos;
+package com.example.wlf.jumper.elements;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,10 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 import com.example.wlf.jumper.R;
-import com.example.wlf.jumper.graficos.Cores;
-import com.example.wlf.jumper.graficos.Tela;
+import com.example.wlf.jumper.graphics.Cores;
+import com.example.wlf.jumper.graphics.Tela;
 
-public class Cano {
+public class Pipe {
 
     private final Paint VERDE = Cores.getCorDoCano();
     private static final int TAMANHO_DO_CANO = 250;
@@ -24,7 +24,7 @@ public class Cano {
     private int posicao;
     private Context context;
 
-    public Cano( Tela tela, int posicao, Context context )
+    public Pipe(Tela tela, int posicao, Context context )
     {
         this.tela = tela;
         this.posicao = posicao;

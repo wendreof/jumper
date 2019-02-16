@@ -8,12 +8,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import com.example.wlf.jumper.elementos.Canos;
-import com.example.wlf.jumper.elementos.Passaro;
-import com.example.wlf.jumper.elementos.Pontuacao;
+import com.example.wlf.jumper.elements.Pipes;
+import com.example.wlf.jumper.elements.Passaro;
+import com.example.wlf.jumper.elements.Pontuacao;
 import com.example.wlf.jumper.R;
-import com.example.wlf.jumper.elementos.GameOver;
-import com.example.wlf.jumper.graficos.Tela;
+import com.example.wlf.jumper.elements.GameOver;
+import com.example.wlf.jumper.graphics.Tela;
 
 
 public class Game extends SurfaceView implements Runnable, View.OnTouchListener {
@@ -22,7 +22,7 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
     private final SurfaceHolder holder = getHolder();
     private Tela tela;
     private Bitmap background;
-    private Canos canos;
+    private Pipes canos;
     private Canvas canvas;
     private Passaro passaro;
     private Pontuacao pontuacao;
@@ -43,7 +43,7 @@ public class Game extends SurfaceView implements Runnable, View.OnTouchListener 
     {
         this.passaro = new Passaro(tela, context);
         this.pontuacao = new Pontuacao();
-        this.canos = new Canos( tela, pontuacao, context );
+        this.canos = new Pipes( tela, pontuacao, context );
         Bitmap back = BitmapFactory.decodeResource( getResources(), R.drawable.background );
         this.background = Bitmap.createScaledBitmap( back, back.getWidth(), tela.getAltura(), false );
         //this.setBackgroundResource(R.drawable.background);

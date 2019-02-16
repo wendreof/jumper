@@ -1,4 +1,4 @@
-package com.example.wlf.jumper.graficos;
+package com.example.wlf.jumper.graphics;
 
 import android.graphics.Paint;
 import android.graphics.Typeface;

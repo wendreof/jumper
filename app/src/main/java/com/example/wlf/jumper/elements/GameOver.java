@@ -1,11 +1,11 @@
-package com.example.wlf.jumper.elementos;
+package com.example.wlf.jumper.elements;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import com.example.wlf.jumper.graficos.Cores;
-import com.example.wlf.jumper.graficos.Tela;
+import com.example.wlf.jumper.graphics.Cores;
+import com.example.wlf.jumper.graphics.Tela;
 
 public class GameOver {
 

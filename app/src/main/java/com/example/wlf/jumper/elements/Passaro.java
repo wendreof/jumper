@@ -1,4 +1,4 @@
-package com.example.wlf.jumper.elementos;
+package com.example.wlf.jumper.elements;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import com.example.wlf.jumper.R;
 import com.example.wlf.jumper.engine.Som;
-import com.example.wlf.jumper.graficos.Tela;
+import com.example.wlf.jumper.graphics.Tela;
 
 public class Passaro {
 

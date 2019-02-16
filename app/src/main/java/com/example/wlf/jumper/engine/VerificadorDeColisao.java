@@ -1,14 +1,14 @@
 package com.example.wlf.jumper.engine;
 
-import com.example.wlf.jumper.elementos.Canos;
-import com.example.wlf.jumper.elementos.Passaro;
+import com.example.wlf.jumper.elements.Pipes;
+import com.example.wlf.jumper.elements.Passaro;
 
 public class VerificadorDeColisao {
 
     private final Passaro passaro;
-    private final Canos canos;
+    private final Pipes canos;
 
-    public VerificadorDeColisao( Passaro passaro, Canos canos )
+    public VerificadorDeColisao( Passaro passaro, Pipes canos )
     {
         this.passaro = passaro;
         this.canos = canos;

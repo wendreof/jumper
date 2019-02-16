@@ -1,8 +1,8 @@
-package com.example.wlf.jumper.elementos;
+package com.example.wlf.jumper.elements;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import com.example.wlf.jumper.graficos.Cores;
+import com.example.wlf.jumper.graphics.Cores;
 
 public class Pontuacao {
 
